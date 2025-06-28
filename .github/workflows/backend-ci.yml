@@ -1,0 +1,70 @@
+# Backend CI workflow for RoutineX
+# Runs on backend code changes to ensure code quality and functionality
+name: Backend CI
+
+on:
+  push:
+    branches: [main]
+    paths: 
+      - 'backend/**'
+      - '.github/workflows/backend-ci.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/backend-ci.yml'
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
+
+    steps:
+      # Checkout repository code
+      - uses: actions/checkout@v4
+      
+      # Setup Go environment matching the version in go.mod
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.24.4"
+      
+      # Install goimports for import formatting checks
+      - name: Install goimports
+        run: go install golang.org/x/tools/cmd/goimports@latest
+      
+      # Download Go module dependencies
+      - name: Download dependencies
+        run: go mod download
+      
+      # Check that all Go files are properly formatted with gofmt
+      # Fails if any files need formatting
+      - name: Check formatting
+        run: |
+          gofmt -l . | tee /tmp/gofmt.out
+          test ! -s /tmp/gofmt.out
+      
+      # Check that all imports are properly organized
+      # Fails if any files have incorrect import ordering/grouping
+      - name: Check imports
+        run: |
+          goimports -l -local github.com/ys-1052/routinex/backend . | tee /tmp/goimports.out
+          test ! -s /tmp/goimports.out
+      
+      # Install golangci-lint for comprehensive code analysis
+      - name: Install golangci-lint
+        run: go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+      
+      # Run static analysis with golangci-lint
+      # Checks for code quality, security issues, and style violations
+      - name: Run linter
+        run: golangci-lint run
+      
+      # Run all unit tests with verbose output
+      - name: Run tests
+        run: go test -v ./...
+      
+      # Build the application to ensure it compiles successfully
+      - name: Build application
+        run: go build .
