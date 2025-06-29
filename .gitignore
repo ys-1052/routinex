@@ -3,3 +3,7 @@ backend/bin/
 
 # Environment variables
 backend/.env
+
+# Claude
+.claude/settings.local.json
+backend/.claude/settings.local.json

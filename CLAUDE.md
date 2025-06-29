@@ -6,6 +6,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **IMPORTANT**: Always respond in Japanese when working with this repository. All explanations, comments, and communications should be in Japanese.
 
+## Cost Management
+
+**IMPORTANT**: To minimize costs, please limit external service calls to the absolute minimum. Only use external services when absolutely necessary for the task at hand. Prefer local file operations, code analysis, and built-in tools over web searches or external API calls.
+
 ## Project Overview
 
 RoutineX is a routine management application with a Go backend using the Echo web framework. The project follows a monorepo structure with separate backend and frontend directories.

@@ -28,7 +28,9 @@ description: 'Git commit workflow following Conventional Commits specification'
 ## 前提条件
 
 - **重要**: コミットしたいファイルを事前に`git add`でステージングエリアに追加しておく必要があります
+- **注意**: Claudeは自動的に`git add`を実行しません。ユーザーが明示的にファイルをステージングすることが必要です
 - ステージされたファイルがない場合は何もしません
+- Claudeはステージングエリアにある変更のみを対象としてコミットを作成します
 - 例: `git add .` または `git add <ファイル名>` でファイルをステージング
 
 ## 参考: Conventional Commits 仕様
