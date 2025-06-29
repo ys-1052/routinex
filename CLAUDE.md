@@ -33,8 +33,9 @@ The main server runs on port 8080 and includes logging and recovery middleware b
 
 **IMPORTANT**: 
 - Always run formatting and linting before committing code
-- Check that .gitignore is up to date when adding new build artifacts or dependencies
-- Only add entries to .gitignore for files/directories that actually exist in the project
+- .gitignore should ONLY contain files/directories that actually exist in the project
+- NEVER add future or speculative entries to .gitignore - only add what currently exists
+- When new files/directories are created, update .gitignore at that time, not before
 
 ```bash
 # Format code (REQUIRED before commits)

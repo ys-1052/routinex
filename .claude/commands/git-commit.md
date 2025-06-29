@@ -27,8 +27,9 @@ description: 'Git commit workflow following Conventional Commits specification'
 
 ## 前提条件
 
-- コミットしたいファイルが既にステージング済み（`git add`実行済み）
+- **重要**: コミットしたいファイルを事前に`git add`でステージングエリアに追加しておく必要があります
 - ステージされたファイルがない場合は何もしません
+- 例: `git add .` または `git add <ファイル名>` でファイルをステージング
 
 ## 参考: Conventional Commits 仕様
 
