@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Communication Language
+
+**IMPORTANT**: Always respond in Japanese when working with this repository. All explanations, comments, and communications should be in Japanese.
+
 ## Project Overview
 
 RoutineX is a routine management application with a Go backend using the Echo web framework. The project follows a monorepo structure with separate backend and frontend directories.
